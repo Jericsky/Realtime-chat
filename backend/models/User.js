@@ -4,27 +4,27 @@ import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        require: true
+        required: [true, 'First name is required']
     },
     lastName: {
         type: String,
-        require: true
+        required: [true, 'Last name is required']
     },
     username: {
         type: String,
-        require: true
+        required: [true, 'Username is required']
     },
     password: {
         type: String,
-        require: true,
+        required: [true, 'Password is required'],
         minlength: 6
     },
     gender: {
         type: String,
-        require: true,
+        required: [true, 'Gender name is required'],
         enum: ["male", "female"]
     }
-})
+},{timestamps: true})
 
 const User = mongoose.model("User", userSchema);
 export default User;
