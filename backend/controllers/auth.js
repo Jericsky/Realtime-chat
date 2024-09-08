@@ -17,7 +17,7 @@ export const signupUser = async (req, res) => {
 
         const duplicateUsername = await User.findOne({ username });
         if (duplicateUsername) {
-            return res.status(400).send("duplicate username");
+            return res.status(400).send({error: "duplicate username"});
         }
 
         const hashedPassword = bcryptjs.hashSync(password, 10)
